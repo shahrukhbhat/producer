@@ -1,0 +1,29 @@
+applications:
+  - name: producer
+    host: producer-host
+    buildpack: 'https://github.com/cloudfoundry/nodejs-buildpack'
+    memory: 256M
+    health-check-type: none
+    path: .
+    command: node producer.js
+    services:
+      - my-ems-demo-instance
+    env:
+      SAP_JWT_TRUST_ACL: '[{"clientid":"*","identityzone":"*"}]'
+      SAP_XBEM_BINDINGS: |
+        {
+          "inputs": {},
+          "outputs": {
+            "myOutA" : {
+              "service": "my-ems-demo-instance",
+              "address": "topic:sap/mymsc/demo/e4l",
+              "reliable": false
+            },
+            "myOutB" : {
+              "service": "my-ems-demo-instance",
+              "address": "topic:sap/mymsc/demo/e4l",
+              "reliable": false
+            }
+          }
+        }
+

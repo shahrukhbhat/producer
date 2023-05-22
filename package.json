@@ -1,0 +1,17 @@
+{
+    "name": "producer",
+    "description": "Simple NodeJS Application producing messages",
+    "version": "0.0.1",
+    "engines": {
+            "node": ">=6.9.1"
+    },
+          "dependencies": {
+    "@sap/xb-msg": "^0.9.12",
+    "@sap/xb-msg-amqp-v100": "^0.9.48",
+    "@sap/xb-msg-env": "^0.9.7",
+    "@sap/xsenv": "^3.1.0"
+    },
+    "scripts": {
+            "start": "node producer.js"
+    }
+}
